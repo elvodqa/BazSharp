@@ -37,7 +37,7 @@ str // utf 8 string
 
 ```go
 nil 
-a := nil // a is a null pointer
+a := nil; // a is a null pointer
 ```
 
 ### Slice Types
@@ -54,10 +54,9 @@ Foo :: struct {}
 
 // A struct with fields
 Foo :: struct {
-    x, y: i32
-    u: f32
-    A: ^[]i32
-    F: fn()
+    x, y: i32,
+    u: f32,
+    A: ^[]i32,
 }
 ```
 
@@ -65,10 +64,9 @@ Foo :: struct {
 
 ```cpp
 Foo :: <T>struct {
-    x, y: T
-    u: f32
-    A: ^[]T
-    F: fn()
+    x, y: T,
+    u: f32,
+    A: ^[]T,
 }
 ```
 
@@ -88,25 +86,25 @@ Foo :: <T>struct {
 ```cpp
 foo :: fn()
 foo :: fn(x: i32)
-foo :: fn(x: i32) bool
-foo :: fn(x: i32) (bool)
-foo :: fn(x: i32, values: ...i32) (bool, ^[4]f32)
+foo :: fn(x: i32) => bool
+foo :: fn(x: i32) => (bool)
+foo :: fn(x: i32, values: ...i32) => (bool, ^[4]f32)
 ```
 
 ## Type Declarations
 
 ```cpp
-foo: i32 // immutable 
-mut foo: i32 // mutable 
-foo: i32 : 1 // constant
-foo := 1 // immutable and type is inferred by the compiler
+foo: i32; // immutable 
+mut foo: i32; // mutable 
+foo: i32 : 1; // constant
+foo := 1; // immutable and type is inferred by the compiler
 ```
 
 ## Method Declarations
 
 ```cpp
-Add :: fn(x, y: i32) i32 {
-    return x + y
+Add :: fn(x, y: i32) => i32 {
+    return x + y;
 }
 
 Clear :: fn(flags: GL_ENUM) {
@@ -148,9 +146,9 @@ ColourToString :: [Colour]str
   .White = "White",
 }
 
-c := Colour.Black
+c := Colour.Black;
 
-print(c->ColourToString[])
+print(c->ColourToString[]);
 ```
 
 ## Union Declarations
@@ -211,10 +209,10 @@ generic_func :: (param : $T) T
 ```cpp
 someType :: f32
 // keyword 'distinct' is optional
-Position :: distinct [3]f32
-Velocity :: distinct [3]f32
+Position :: distinct [3]f32;
+Velocity :: distinct [3]f32;
 
-a : Position = Velocity{1, 2, 3} //Type mismatch, compilation error.
+a : Position = Velocity{1, 2, 3}; //Type mismatch, compilation error.
 ```
 
 ## Type Casting
@@ -261,38 +259,38 @@ when x {
 ```cpp
 operator + :: fn(a, b : quaternion) => quaternion {}
 
-myQuat := a + b
+myQuat := a + b;
 
 //Treating them like functions also lets us use packages to disambiguate when needed.
-myQuat := a koziMath.+ b
+myQuat := a koziMath.+ b;
 
 //Can use the using_ops statement to only pull a package's operators directly into current scope
 
-package EpicMath
+package EpicMath;
 operator * :: fn(a, b : quaternion) => quaternion {}
 doMath :: fn(value : quaternion) => f32 {}
 
 //Some other file in a different package...
-import "EpicMath"
+import "EpicMath";
 
-q := a EpicMath.+ b
+q := a EpicMath.+ b;
 
 //Or this!
-using_ops EpicMath
+using_ops EpicMath;
 
-q := a + b                   //Now we don't need to fully qualify the op.
-scalar := EpicMath.doMath(q) //Still need to qualify normal functions.
+q := a + b;                   //Now we don't need to fully qualify the op.
+scalar := EpicMath.doMath(q); //Still need to qualify normal functions.
 ```
 
 ###  Defer
 
 ```cpp
-a := 1
-defer print(a)
-b := 2
-defer print(b)
-c := 3
-defer print(c)
+a := 1;
+defer print(a);
+b := 2;
+defer print(b);
+c := 3;
+defer print(c);
 //Defer statements get executed at the end of the scope they were declared in.
 //Defer statements get executed in reverse order.
 //Will print 3, then 2, then 1.
@@ -304,16 +302,16 @@ defer print(c)
 toString :: fn(a : int) => string
 {}
 
-a := 129
+a := 129;
 
 //With the pipe operator we can turn this:
-print(toString(a))
+print(toString(a));
 
 //To this:
-print(a->toString())
+print(a->toString());
 
 //Or even this:
-a->toString()->print()
+a->toString()->print();
 ```
 
 ## Switches
