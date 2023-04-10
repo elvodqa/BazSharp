@@ -35,6 +35,9 @@ public class Lexer
                 return new Token(TokenType.NewLine, "", Line, Column);
             
             case ' ': case '\t': case '\r':
+                /* This is a temporary fix for an issue.
+                 * Also I don't think whitespace information is really necessary anyways. 
+                 * So I'm just gonna yeet this part out.
                 int numberOfSpaces = 1;
                 while (Next == ' ' || Next == '\t' || Next == '\r')
                 {
@@ -43,6 +46,8 @@ public class Lexer
                     numberOfSpaces++;
                 }
                 return new Token(TokenType.WhiteSpaceTrivia, numberOfSpaces, Line, Column);
+                */
+                return NextToken();
             case '+': return new Token(TokenType.Plus, "+", Line, Column);
             case '-': return new Token(TokenType.Minus, "-", Line, Column);
             case '*': return new Token(TokenType.Star, "*", Line, Column);

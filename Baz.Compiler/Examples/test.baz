@@ -1,5 +1,7 @@
-﻿import "core:fmt"
+﻿package main;
 
-fn main() {
-    fmt.println("Hello, world!")
+import "core:fmt";
+
+main :: fn() {
+    a := 1 + 2 / 3 * 4 - 5;
 }

@@ -2,6 +2,7 @@
 
 public enum ExprType
 {
+    BinaryExpr,
     PackageExpr,
     ImportExpr,
     FunctionExpr,

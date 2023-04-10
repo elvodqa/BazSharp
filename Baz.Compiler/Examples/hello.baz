@@ -1,6 +1,6 @@
-﻿package main
+﻿package main;
 
-import "core:fmt"
+import "core:fmt";
 
 vec2 :: struct {
     x: int,

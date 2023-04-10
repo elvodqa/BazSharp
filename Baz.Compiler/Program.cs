@@ -11,7 +11,10 @@ while (true)
 
     if (Token.Type == TokenType.Eof)
         break;
-    
-    if (Token.Type != TokenType.NewLine || Token.Type != TokenType.WhiteSpaceTrivia)
-        Console.WriteLine($"[{Token.Line}:{Token.Column}]{Token}");
+
+    if (Token.Type != TokenType.NewLine && Token.Type != TokenType.WhiteSpaceTrivia)
+    {
+        Console.WriteLine($"[{Token.Line}:{Token.Column}] {Token}");
+    }
+        
 }
