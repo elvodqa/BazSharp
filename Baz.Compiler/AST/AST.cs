@@ -1,4 +1,4 @@
-﻿namespace Baz.Compiler.Parser;
+﻿namespace Baz.Compiler.AST;
 
 public class AST
 {

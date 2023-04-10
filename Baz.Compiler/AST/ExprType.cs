@@ -1,6 +1,14 @@
 ﻿namespace Baz.Compiler.AST;
 
-public class ExprType
+public enum ExprType
 {
-    
+    PackageExpr,
+    ImportExpr,
+    FunctionExpr,
+    VariableExpr,
+    BlockExpr, // { }
+    IfExpr, 
+    ForExpr,
+    StructExpr,
+    EnumExpr,
 }

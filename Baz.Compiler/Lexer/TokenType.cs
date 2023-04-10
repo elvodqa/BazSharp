@@ -1,12 +1,8 @@
-﻿namespace Baz.Compiler;
+﻿namespace Baz.Compiler.Lexer;
 
 public enum TokenType
 {
     Identifier,
-    Function,
-    If,
-    Else,
-    For,
     Plus,
     Minus, // -
     Star, // *
@@ -14,8 +10,8 @@ public enum TokenType
     Modulo, // %
     Bang, // !
     BangEqual, // !=
-    Equal, // =
-    EqualEqual, // ==
+    Assign, // =
+    Equal, // ==
     Greater, // >
     GreaterEqual, // >=
     Less, // <
@@ -31,12 +27,13 @@ public enum TokenType
     Comma, // ,
     Dot, // .
     Colon, // :
+    ColonColon, // ::
     Semicolon, // ;
-    String, 
-    Number,
-    True,
-    False,
-    Null,
-    Let,
+    StringLiteral, 
+    NumberLiteral,
+    BooleanLiteral,
+    NewLine,
+    Error,
+    WhiteSpaceTrivia,
     Eof
 }

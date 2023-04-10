@@ -1,0 +1,23 @@
+﻿package main
+
+import "core:fmt"
+
+vec2 :: struct {
+    x: int,
+    y: int,
+}
+
+PI :: 3.14159265359;
+
+main :: fn() {
+    mut myVec : vec2 = {
+        x: 0,
+        y: 10,
+    };
+    
+    for i := 0; i < 10; i++ {
+        myVec.x += i;
+    }
+    
+    fmt.println(myVec.x);
+}
