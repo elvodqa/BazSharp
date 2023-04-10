@@ -1,6 +1,6 @@
 # Baz Language (0.0.1) Spesification
 
-Baz is a programming language design around the idea of how much other languages suck at some things.
+Baz is a programming language heavily inspired by Odin/JAI. It's made joy of programming in mind and tries to eliminate boring practices and make programming fun. 
 
 ## Types
 
