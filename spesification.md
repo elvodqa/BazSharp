@@ -170,8 +170,8 @@ print(c->ColourToString[]);
 TODO: Improve(?)
 
 ```cpp
-// cUnions are C equvalent they do not support switch statements or checks for type errors
-// all access to them is equivalent to c++ reinterpet_cast
+// cUnions are C equivalent they do not support switch statements or checks for type errors
+// all access to them is equivalent to c++ reinterpret_cast
 Foo :: cUnion {
     i32,
     f32,
