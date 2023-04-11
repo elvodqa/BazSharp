@@ -4,11 +4,19 @@ using Baz.Compiler.Lexer;
 
 string Source = File.ReadAllText(args[0]);
 
-Lexer Lexer = new Lexer(Source);
-Parser Parser = new Parser(Lexer);
 
-List<SyntaxNode> Nodes = Parser.Parse();
-foreach (SyntaxNode Node in Nodes)
+while (true)
 {
-    Console.WriteLine(Node);
+    Console.Write("Baz> ");
+    var input = Console.ReadLine();
+    Lexer Lexer = new Lexer(input);
+    while (true)
+    {
+        var token = Lexer.NextToken();
+        if (token.Type == TokenType.Eof)
+        {
+            break;
+        }
+        Console.WriteLine(token);
+    }
 }

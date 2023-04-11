@@ -7,6 +7,7 @@ public enum TokenType
     Minus, // -
     Star, // *
     Slash, // /
+    SlashSlash, // //
     Modulo, // %
     Bang, // !
     BangEqual, // !=
@@ -35,5 +36,25 @@ public enum TokenType
     NewLine,
     Error,
     WhiteSpaceTrivia,
-    Eof
+    Eof,
+    
+    // Keywords
+    Package,
+    Import,
+    Fn,
+    Struct,
+    Mut,
+    Enum,
+    Union,
+    Nil,
+    Break,
+    Continue,
+    Switch,
+    Case,
+    When,
+    If,
+    Else,
+    For,
+    Default,
+    Is,
 }

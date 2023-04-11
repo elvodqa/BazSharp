@@ -130,7 +130,8 @@ public class Lexer
             {
                 var start = Position - 1;
                 var _column = Column;
-                while (char.IsLetterOrDigit(Current))
+                
+                while (!IsAtEnd && char.IsLetterOrDigit(Current))
                 {
                     Position++;
                     Column++;
@@ -139,10 +140,50 @@ public class Lexer
                 var length = Position - start;
                 var text = Source.Substring(start, length);
 
-                if (text == "true" || text == "false")
-                    return new Token(TokenType.BooleanLiteral, bool.Parse(text), Line, Column);
-
-                return new Token(TokenType.Identifier, text, Line, _column);
+                switch (text)
+                {
+                    case "true":
+                    case "false":
+                        return new Token(TokenType.BooleanLiteral, bool.Parse(text), Line, Column);
+                    case "nil":
+                        return new Token(TokenType.Nil, null, Line, Column);
+                    case "fn":
+                        return new Token(TokenType.Fn, null, Line, Column);
+                    case "mut":
+                        return new Token(TokenType.Mut, null, Line, Column);
+                    case "if":
+                        return new Token(TokenType.If, null, Line, Column);
+                    case "else":
+                        return new Token(TokenType.Else, null, Line, Column);
+                    case "for":
+                        return new Token(TokenType.For, null, Line, Column);
+                    case "package":
+                        return new Token(TokenType.Package, null, Line, Column);
+                    case "import":
+                        return new Token(TokenType.Import, null, Line, Column);
+                    case "struct":
+                        return new Token(TokenType.Struct, null, Line, Column);
+                    case "enum":
+                        return new Token(TokenType.Enum, null, Line, Column);
+                    case "union":
+                        return new Token(TokenType.Union, null, Line, Column);
+                    case "break":
+                        return new Token(TokenType.Break, null, Line, Column);
+                    case "continue":
+                        return new Token(TokenType.Continue, null, Line, Column);
+                    case "switch":
+                        return new Token(TokenType.Switch, null, Line, Column);
+                    case "case":
+                        return new Token(TokenType.Case, null, Line, Column);
+                    case "default":
+                        return new Token(TokenType.Default, null, Line, Column);
+                    case "when":
+                        return new Token(TokenType.When, null, Line, Column);
+                    case "is":
+                        return new Token(TokenType.Is, null, Line, Column);
+                    default:
+                        return new Token(TokenType.Identifier, text, Line, _column);
+                }
             }
             // String literal
             case '"':
@@ -150,7 +191,7 @@ public class Lexer
                 var start = Position;
                 var str = "";
                 var _column = Column;
-                while (Current != '"' && !IsAtEnd)
+                while (!IsAtEnd && Current != '"')
                 {
                     str += Current;
                     Position++;
@@ -168,7 +209,7 @@ public class Lexer
                 var start = Position - 1;
                 var _column = Column;
                 var hasDecimal = false;
-                while (char.IsDigit(Current) || Current == '.')
+                while (!IsAtEnd && char.IsDigit(Current) || Current == '.')
                 {
                     if (Current == '.')
                     {

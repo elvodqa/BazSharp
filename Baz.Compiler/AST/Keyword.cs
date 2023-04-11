@@ -43,7 +43,7 @@ public enum Keyword
     [Description("struct")]
     struct_,
     [Description("enum")]
-    enum_,
+    @enum,
     [Description("union")]
     union,
     [Description("fn")]
