@@ -2,6 +2,16 @@
 
 Baz is a programming language heavily inspired by Odin/JAI. It's made joy of programming in mind and tries to eliminate boring practices and make programming fun.
 
+### Progress
+
+- [x] Lexer
+- [ ] AST
+- [ ] Parser
+- [ ] Basic C transpiler
+- [ ] Implement all language features
+- [ ] Optimize transpiler
+- [ ] Bootstrapping
+
 ##  Example
 
 ```odin
