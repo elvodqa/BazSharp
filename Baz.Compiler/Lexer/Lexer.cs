@@ -63,6 +63,7 @@ public class Lexer
             case '.': return new Token(TokenType.Dot, ".", Line, Column);
             case ':':
                 /* if (Next == ':')
+                 * Ok we ballin' now. ColonColon is not a thing anymore.
                 {
                     Position++;
                     Column++;
@@ -166,15 +167,25 @@ public class Lexer
             {
                 var start = Position - 1;
                 var _column = Column;
+                var hasDecimal = false;
                 while (char.IsDigit(Current) || Current == '.')
                 {
+                    if (Current == '.')
+                    {
+                        if (hasDecimal)
+                            return new Token(TokenType.Error, "Unexpected character '.'", Line, Column);
+                        hasDecimal = true;
+                    }
                     Position++;
                     Column++;
                 }
 
                 var length = Position - start;
                 var text = Source.Substring(start, length);
-                return new Token(TokenType.NumberLiteral, float.Parse(text), Line, _column);
+                if (hasDecimal)
+                    return new Token(TokenType.NumberLiteral, float.Parse(text), Line, _column);
+                return new Token(TokenType.NumberLiteral, int.Parse(text), Line, _column);
+
             }
             default:
                 return new Token(TokenType.Error, null, Line, Column);

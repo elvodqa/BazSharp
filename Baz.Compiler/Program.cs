@@ -16,5 +16,4 @@ while (true)
     {
         Console.WriteLine($"[{Token.Line}:{Token.Column}] {Token}");
     }
-        
 }

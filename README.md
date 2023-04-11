@@ -1,6 +1,7 @@
 # Baz
 
 Baz is a programming language heavily inspired by Odin/JAI. It's made joy of programming in mind and tries to eliminate boring practices and make programming fun.
+Current is [spesification](spesification.md) is available.
 
 ### Progress
 

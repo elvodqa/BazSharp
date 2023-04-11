@@ -8,6 +8,7 @@ vec2 :: struct {
 }
 
 PI :: 3.14159265359;
+random: int = 13;
 
 main :: fn() {
     mut myVec : vec2 = {

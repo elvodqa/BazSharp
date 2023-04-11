@@ -24,7 +24,7 @@ bool // true or false
 
 ```cpp
 str8 str16 str32
-str // utf 8 string 
+string :: str8 // Alias for utf-8 string
 ```
 
 ### Array Types
@@ -33,10 +33,16 @@ str // utf 8 string
 [ArraySize]ArrayType // eg: [255]f32
 ```
 
+#### Dynamic Array Types
+Note: Dynamic arrays might not be supported. Just out of spite. 
+```cpp
+[dynamic]ArrayType // eg: []f32
+```
+
 ### Null Types
 
 ```go
-nil 
+nil
 a := nil; // a is a null pointer
 ```
 
@@ -61,7 +67,7 @@ Foo :: struct {
 ```
 
 #### Generic Struct Types
-
+Note: Syntax might change. (Most probably)
 ```cpp
 Foo :: <T>struct {
     x, y: T,
@@ -81,6 +87,12 @@ Foo :: <T>struct {
 // for reference, use the & operator as always
 ```
 
+Note: I might change mutable pointer to use a syntax similar to this.
+Most probably I won't. Just a self note.
+```c++
+mut *T //Mutable pointer 
+```
+
 ### Function Types
 
 ```cpp
@@ -97,6 +109,7 @@ foo :: fn(x: i32, values: ...i32) => (bool, ^[4]f32)
 foo: i32; // immutable 
 mut foo: i32; // mutable 
 foo: i32 : 1; // constant
+foo :: 1; // constant and type is inferred by the compiler
 foo := 1; // immutable and type is inferred by the compiler
 ```
 
@@ -123,7 +136,7 @@ Color :: enum {
 }
 ```
 
-###  Indexing Array with Enum
+###  Indexing Array with Enums
 
 ```cpp
 ColorToRGB8 :: [Color]RGB8 {
@@ -134,6 +147,7 @@ ColorToRGB8 :: [Color]RGB8 {
     .White = {255, 255, 255},
 }
 
+// Classic enums
 Colour :: enum
 {
   Black,
@@ -233,14 +247,6 @@ if x == 1 {
 }
 
 // When is a compile time "if"
-when x == 1 {
-    // do something
-} else when x == 2 {
-    // do something else
-} else {
-    // do something else
-}
-
 when x {
     1 => {
         // do something
@@ -249,7 +255,7 @@ when x {
         // do something else
     }
     _ => {
-        // do something else
+        // default
     }
 }
 ```
@@ -260,26 +266,6 @@ when x {
 operator + :: fn(a, b : quaternion) => quaternion {}
 
 myQuat := a + b;
-
-//Treating them like functions also lets us use packages to disambiguate when needed.
-myQuat := a koziMath.+ b;
-
-//Can use the using_ops statement to only pull a package's operators directly into current scope
-
-package EpicMath;
-operator * :: fn(a, b : quaternion) => quaternion {}
-doMath :: fn(value : quaternion) => f32 {}
-
-//Some other file in a different package...
-import "EpicMath";
-
-q := a EpicMath.+ b;
-
-//Or this!
-using_ops EpicMath;
-
-q := a + b;                   //Now we don't need to fully qualify the op.
-scalar := EpicMath.doMath(q); //Still need to qualify normal functions.
 ```
 
 ###  Defer
@@ -319,18 +305,18 @@ a->toString()->print();
 ```cpp
 switch someEnum
 {
-  is A => print("A"),
-  is B => print("B"),
-  is C => print("C"),
-  is D => print("D"),
+  is A => fmt.print("A"),
+  is B => fmt.print("B"),
+  is C => fmt.print("C"),
+  is D => fmt.print("D"),
 }
 
 //Switches are expressions and can therefore produce a value.
 n : int = switch someEnum
 {
-  is A => 129,
-  is B => 991,
-  is C => 1822,
-  is D => -12,
+  is A => 61,
+  is B => 21,
+  is C => 34,
+  is D => 0,
 }
 ```
