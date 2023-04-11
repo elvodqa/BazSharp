@@ -36,7 +36,7 @@ string :: str8 // Alias for utf-8 string
 #### Dynamic Array Types
 Note: Dynamic arrays might not be supported. Just out of spite. 
 ```cpp
-[dynamic]ArrayType // eg: []f32
+[dynamic]ArrayType // eg: [dynamic]f32
 ```
 
 ### Null Types
