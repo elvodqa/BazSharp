@@ -6,7 +6,6 @@ Current is [spesification](spesification.md) is available.
 ### Progress
 
 - [x] Lexer
-- [ ] AST
 - [ ] Parser
 - [ ] Basic C0 transpiler
 - [ ] Implement all language features
