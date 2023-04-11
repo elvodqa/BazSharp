@@ -185,6 +185,12 @@ public class Lexer
                         return new Token(TokenType.Identifier, text, Line, _column);
                 }
             }
+                
+            /* TODO: 
+            * Error eg:
+             * Given> "Hello" World"
+             * This lexes to ["Hello", "World", ""] WTF!?!
+            */
             // String literal
             case '"':
             {
@@ -198,11 +204,13 @@ public class Lexer
                     Column++;
                 }
 
-                Position++;
-                Column++;
+                Position += 2;
+                Column += 2;,
+                
                 return new Token(TokenType.StringLiteral, str, Line, _column);
             }
-            
+        
+           
             // Number literal
             case char _ when char.IsDigit(c):
             {
