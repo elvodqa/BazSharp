@@ -1,19 +1,14 @@
 ﻿
+using Baz.Compiler.AST;
 using Baz.Compiler.Lexer;
 
 string Source = File.ReadAllText(args[0]);
 
 Lexer Lexer = new Lexer(Source);
+Parser Parser = new Parser(Lexer);
 
-while (true)
+List<SyntaxNode> Nodes = Parser.Parse();
+foreach (SyntaxNode Node in Nodes)
 {
-    Token Token = Lexer.NextToken();
-
-    if (Token.Type == TokenType.Eof)
-        break;
-
-    if (Token.Type != TokenType.NewLine && Token.Type != TokenType.WhiteSpaceTrivia)
-    {
-        Console.WriteLine($"[{Token.Line}:{Token.Column}] {Token}");
-    }
+    Console.WriteLine(Node);
 }

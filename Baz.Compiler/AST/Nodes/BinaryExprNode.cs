@@ -10,7 +10,7 @@ public enum ArithmeticOperator
     Power
 }
 
-public class BinaryExprNode
+public class BinaryExprNode : SyntaxNode
 {
     public SyntaxNode Left { get; set; }
     public SyntaxNode Right { get; set; }
@@ -21,5 +21,6 @@ public class BinaryExprNode
         Left = left;
         Right = right;
         Operator = op;
+        NodeType = NodeType.BinaryExpr;
     }
 }
