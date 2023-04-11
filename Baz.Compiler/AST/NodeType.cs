@@ -1,6 +1,6 @@
 ﻿namespace Baz.Compiler.AST;
 
-public enum ExprType
+public enum NodeType
 {
     ConstantExpr,
     FunctionCallExpr,
@@ -8,10 +8,6 @@ public enum ExprType
     IdentifierExpr,
     BinaryExpr,
     UnaryExpr,
-}
-
-public enum StatementType
-{
     ElseStatement,
     IfStatement,
     BlockStatement,
@@ -21,10 +17,7 @@ public enum StatementType
     EmptyStatement,
     ForStatement,
     ReturnStatement,
-}
-
-public enum DeclarationType
-{
-    FunctionDecleration,
-    VariableDecleration,
+    FunctionDecl,
+    VariableDecl,
+    StructDecl,
 }
