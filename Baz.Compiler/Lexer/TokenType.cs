@@ -57,4 +57,6 @@ public enum TokenType
     For,
     Default,
     Is,
+    Distinct,
+    Proc,
 }

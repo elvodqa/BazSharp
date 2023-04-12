@@ -51,7 +51,17 @@ public class Lexer
             case '+': return new Token(TokenType.Plus, "+", Line, Column);
             case '-': return new Token(TokenType.Minus, "-", Line, Column);
             case '*': return new Token(TokenType.Star, "*", Line, Column);
-            case '/': return new Token(TokenType.Slash, "/", Line, Column);
+            case '/': 
+                if (Next == '/')
+                {
+                    // TODO: ignore the rest of the line
+                    while (Next != '\n' && !IsAtEnd)
+                    {
+                        Position++;
+                        Column++;
+                    }
+                }
+                return new Token(TokenType.Slash, "/", Line, Column);
             case '%': return new Token(TokenType.Modulo, "%", Line, Column);
             case '(': return new Token(TokenType.LeftParen, "(", Line, Column);
             case ')': return new Token(TokenType.RightParen, ")", Line, Column);
@@ -181,6 +191,10 @@ public class Lexer
                         return new Token(TokenType.When, null, Line, Column);
                     case "is":
                         return new Token(TokenType.Is, null, Line, Column);
+                    case "distinct":
+                        return new Token(TokenType.Distinct, null, Line, Column);
+                    case "proc":
+                        return new Token(TokenType.Proc, null, Line, Column);
                     default:
                         return new Token(TokenType.Identifier, text, Line, _column);
                 }
@@ -204,8 +218,8 @@ public class Lexer
                     Column++;
                 }
 
-                Position += 2;
-                Column += 2;,
+                Position++;
+                Column++;
                 
                 return new Token(TokenType.StringLiteral, str, Line, _column);
             }
