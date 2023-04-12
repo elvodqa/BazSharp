@@ -170,14 +170,23 @@ print(c->ColourToString[]);
 TODO: Improve(?)
 
 ```cpp
-Foo :: union {
+// cUnions are C equivalent they do not support switch statements or checks for type errors
+// all access to them is equivalent to c++ reinterpret_cast
+Foo :: cUnion {
     i32,
     f32,
     str,
 }
-
+// trackedUnions have a architecture-word sized identifier at the offset 0 
+// which allows for runtime typechecking and switch is statements
+Bar :: trackedUnion{
+    // *hidden* ID:int
+    i32,
+    f32,
+    str
+}
 //Can also use named variants:
-namedUnion :: union
+namedUnion :: cUnion
 {
   Number : int,
   OtherNumber : int,
@@ -185,7 +194,7 @@ namedUnion :: union
   Id : GUID,
 }
 
-Shape :: union
+Shape :: trackedUnion
 {
   Square,
   Rectangle,
@@ -197,7 +206,7 @@ Shape :: union
 
 triangle : Shape = Triangle{} 
 
-switch triangle
+switch triangle // only possible because Shape is trackedUnion
 {
   is Square    => panic()
   is Rectangle => panic()
